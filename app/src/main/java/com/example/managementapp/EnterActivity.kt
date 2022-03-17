@@ -139,7 +139,7 @@ class EnterActivity : AppCompatActivity() {
             val ettitude = ettitude_score.trim()
 
             val userdb = FirebaseDatabase.getInstance()
-            val userref = userdb.getReference("UserList")
+            val userref = userdb.getReference("ScoreList")
             val scoreId = userref.push().key.toString()
             val score_info = ListScore(date, username, classname, studentname, area, subject, content, progress,
                 attend, supdate, suptime,
@@ -147,10 +147,8 @@ class EnterActivity : AppCompatActivity() {
                 homework_text, homework, ettitude)
 
             userref.child(scoreId).setValue(score_info)
-
-            val enter_set_intent = Intent(this, ResultActivity::class.java)
-
-            startActivity(enter_set_intent)
+            val enter_end_intent = Intent(this, ResultActivity::class.java)
+            startActivity(enter_end_intent)
         }
     }
 }
